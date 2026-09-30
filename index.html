@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LegalEase - Legal Assistant</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* Navbar */
+        nav {
+            background: #172554;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #172554, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .hero button {
+            margin-top: 30px;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            color: #1d4ed8;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background: #dbeafe;
+        }
+
+        /* Features */
+        .features {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 32px;
+            margin-bottom: 35px;
+            color: #172554;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: #1d4ed8;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: #64748b;
+        }
+
+        /* Legal Assistant */
+        .assistant {
+            padding: 60px 8%;
+            background: #eaf2ff;
+        }
+
+        .assistant-box {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .assistant-box h2 {
+            text-align: center;
+            color: #172554;
+            margin-bottom: 10px;
+        }
+
+        .assistant-box p {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 130px;
+            padding: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+        .ask-btn {
+            width: 100%;
+            margin-top: 15px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .ask-btn:hover {
+            background: #1d4ed8;
+        }
+
+        #response {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            border-radius: 5px;
+            line-height: 1.6;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            max-width: 800px;
+            margin: 30px auto 0;
+            padding: 15px;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            color: #9a3412;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 0;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            ⚖️ Legal<span>Ease</span>
+        </div>
+
+        <div>
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#assistant">Assistant</a>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <h1>Welcome to LegalEase</h1>
+
+        <p>
+            An AI-powered legal assistance platform designed to help
+            users understand legal information in a simple and accessible way.
+        </p>
+
+        <button onclick="scrollToAssistant()">
+            Ask LegalEase
+        </button>
+
+    </section>
+
+
+    <!-- Features -->
+    <section class="features" id="features">
+
+        <h2>Our Features</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">🤖</div>
+
+                <h3>AI Legal Assistant</h3>
+
+                <p>
+                    Ask questions about general legal concepts
+                    and receive easy-to-understand information.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">📄</div>
+
+                <h3>Document Understanding</h3>
+
+                <p>
+                    Understand important information and terminology
+                    commonly found in legal documents.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">🔍</div>
+
+                <h3>Simple Explanations</h3>
+
+                <p>
+                    Complex legal terms can be explained in
+                    simple and understandable language.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI Assistant -->
+    <section class="assistant" id="assistant">
+
+        <div class="assistant-box">
+
+            <h2>⚖️ LegalEase Assistant</h2>
+
+            <p>
+                Enter your general legal question below.
+            </p>
+
+            <textarea
+                id="question"
+                placeholder="Example: What is a rental agreement?">
+            </textarea>
+
+            <button class="ask-btn" onclick="askLegalEase()">
+                Ask LegalEase
+            </button>
+
+            <div id="response"></div>
+
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong>
+                LegalEase provides general legal information only.
+                It does not provide professional legal advice.
+                Please consult a qualified lawyer for advice about
+                your specific situation.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 LegalEase | AI-Powered Legal Assistance
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function scrollToAssistant() {
+
+            document.getElementById("assistant")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        function askLegalEase() {
+
+            const question =
+                document.getElementById("question").value.trim();
+
+            const response =
+                document.getElementById("response");
+
+
+            if (question === "") {
+
+                response.style.display = "block";
+
+                response.innerHTML =
+                    "⚠️ Please enter a legal question.";
+
+                return;
+            }
+
+
+            response.style.display = "block";
+
+            response.innerHTML = `
+                <strong>LegalEase Response</strong>
+                <br><br>
+                Your question has been received.
+                <br><br>
+                <strong>Question:</strong>
+                ${escapeHTML(question)}
+                <br><br>
+                This demo version provides a basic response.
+                The AI backend can be connected later to provide
+                more detailed legal information.
+            `;
+
+        }
+
+
+        function escapeHTML(text) {
+
+            const div = document.createElement("div");
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+    </script>
+
+</body>
+</html>
